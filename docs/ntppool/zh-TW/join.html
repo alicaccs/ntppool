@@ -1,91 +1,70 @@
-[% page.title = 'Join the NTP Pool!'  %]
+[% page.title = '加入 NTP 共用計畫！'  %]
 
 <div class="block">
-	<h3><a name="join">How do I join pool.ntp.org?</a></h3>
+	<h3><a name="join">我該如何加入 pool.ntp.org ？</a></h3>
 	<p>
-	First: Thanks for your interest.  Usage of the pool has grown
-	enormously and the only way we can keep it easy for everyone to run a
-	pool server is to also grow the number of servers participating.
+	首先：感謝你對此感到有興趣，想知道更多。
+	共用計畫的使用量持續顯著地在增長，而唯一能讓我們便利地持續提供服務的方式便是增加更多參與的伺服器。
 	</p>
 
 	<p>
-	Your computer <b>must have a static IP address</b> and a permanent
-	internet connection.  It's very imporant that your IP address doesn't
-	change or only does so extremely infrequently (say once a year or
-	less).  The required bandwidth is relatively low.  Each client will
-	only send a couple of UDP packets every few to every 20 minutes.
+	你的主機<b>必須要有固定的 IP 位址</b>和持續的網際網路連結。
+	擁有固定不變或極少變動（例如一年或更長時間內只變動一次）的 IP 位址對於架設時間伺服器來說十分重要。
+	架設需要的頻寬則是相對較低的。
+	每個用戶只會在每幾分鐘到每 20 分鐘之內傳送幾個 UDP 封包。
 	</p>
 
 	<p>
-	Currently most servers get about 5-15 NTP packets per second
-	with spikes a couple of times a day of 60-120 packets per
-	second.  This is roughly equivalent to 10-15Kbit/sec with
-	spikes of 50-120Kbit/sec.  The project steadily acquires more
-	timeservers, so the load should not increase dramatically for
-	each server.  In plain terms, you probably need at least
-	384-512Kbit bandwidth (in and out-going).
+	目前來說大多數伺服器每秒會收到約 5-15 個 NTP 封包，有時一天之內會有數次每秒收到 60-120 個封包的尖峰期。
+	這約略等同於每秒 10-15Kbit 的流量，尖峰期的流量則可達每秒 50-120Kbit 之多。
+	本計畫持續地在徵求更多的時間伺服器，所以每個伺服器的負載應該不至於會有太過戲劇性的增長。
+	白話來說，至少應該要具備 384-512Kbit 的頻寬（上傳及下載）。
 	</p>
 	<p>
-	Here are a few servers with traffic/load graphs:
+	這邊有幾個伺服器的流量/負載圖表：
 	[% i = 0; FOR server = combust.servers_with_urls; %]
 	   <a href="/scores?ip=[% server.ip %]">[% i=i+1; i %]</a>
 	[% END %]
 	</p>
 
 	<p>
-	The servers joining should not have <tt>pool.ntp.org</tt> as their upstream
-	server(s), but should configure some <a href="http://support.ntp.org/bin/view/Servers/StratumTwoTimeServers">good servers</a> manually (those servers
-	<b>may</b> be chosen from the pool. The point is that they are chosen
-	statically instead of assigned randomly at each server restart.  This
-	will help providing an acceptable quality of service.)
+	加入的伺服器不應設定使用 <tt>pool.ntp.org</tt> 作為其上游時間伺服器，而該手動設定一些<a href="http://support.ntp.org/bin/view/Servers/StratumTwoTimeServers">已知的良好伺服器</a>
+	（該些伺服器<b>可以</b>從共用計畫的伺服器當中選取出來。 
+	這樣要求的意義在於時間來源應該要是恆定的，而非每次伺服器重新啟動時隨機選用。
+	這樣有助於維持良好的時間服務品質。）
 
-	Note that it is not required that your server is a stratum 1 or 2
-	server - as this project is about load distribution mostly, there is
-	no reason why a stratum 3 or even stratum 4 server shouldn't join.
+	注意本計畫並不要求你的伺服器必須要是第一層或第二層時間伺服器 - 
+	因為本計畫的目標最主要在於分散負載，是以即便是第三層或第四層時間伺服器，也沒有理由拒絕它的加入。
 	</p>
 
 	<p>
-	We have a page with <a href="/join/configuration.html">configuration recommendations for servers joining the pool</a>.
+	我們也有提供<a href="/join/configuration.html">建議的設定</a>供有意加入的伺服器管理者參考。
 	</p>
-	<p>Finally, I must emphasize that joining the pool is a <b>long term
-	commitment</b>.  We are happy to take you out of the pool again if your
-	circumstances change, but because of how the ntp clients operate <b>it
-	will take weeks, months or even YEARS before the traffic completely
-        goes away</b>.
+	<p>最後要再次強調，加入共用計畫是一個<b>長期性的承諾</b>。
+	如果狀況有變，我們樂意協助將你的伺服器移出共用計畫，但受限於 NTP 用戶端本身的運作方式，<b>可能需要數周、數月甚至<u>數年</u>的時間流量才會完全消失</b>。
 	</p>
 
 	<p>
-	If this is all ok, login to the
-	<a href="/manage">server management</a> page and request your server to be added. 
-	If you have any trouble with the system, email me at <a
-	href="mailto:ask@develooper.com">ask@develooper.com</a>.
+	如果這些都了解了，請登入<a href="/manage">伺服器管理</a>頁面並登錄你的伺服器。
+	若操作上遇到困難，可以來信至 <a href="mailto:ask@develooper.com">ask@develooper.com</a> 尋求協助。
 	</p>
 	<p>
-	I'd ask you to also subscribe to
-	the <a href="http://news.ntppool.org/atom.xml">weblog feed</a>
-	and maybe to
-	the <a href="https://lists.ntp.org/listinfo/pool">pool mailing
-	list</a>.
+	我們也邀請你訂閱<a href="http://news.ntppool.org/atom.xml">共用計畫網誌 feed</a> 以及<a href="https://lists.ntp.org/listinfo/pool">共用計畫的 mailing list</a> 。
 	</p>
 	<p>
-	It would be nice (but it's not necessary) if you could redirect web requests
-	on port 80 of your time server to the official web page of the project at
-	<tt>http://www.pool.ntp.org</tt>. If you run Apache, you could do this with:
+	如果可以的話（這並不是必要的），請協助將流向你的時間伺服器的 port 80 之網頁要求轉導向至本計畫的官方網站	<tt>http://www.pool.ntp.org</tt> 。
+	如果你有使用 Apache ，可以這樣設定：
 	</p>
 
         [% PROCESS tpl/join/virtual_host_example.html %]
 
 	<p>
-	Again, this is only if you run a webserver anyway. The official project web 
-	page will always be given with the 'www' at the beginning - but sometimes
-	people are lazy and just type <tt>pool.ntp.org</tt> and are then surprised
-	to just get a random web page.
+	當然，這還是在你的主機有架設網頁伺服器的情況下才需要如此。
+	本計畫的官方頁面都有以 'www' 字樣開頭，但總有懶人直接輸入 <tt>pool.ntp.org</tt> 於是發現被導到了某個隨機的網站。
 	</p>
 	<p>
-	Once added to the pool the server is constantly monitored for
-        availability and precision.  You can watch your server's
-        performance using the <a href="scores">web frontend</a> or
-        the <a href="/manage">management page</a>.
+	加入共用計畫的伺服器都會持續受到監測以確認其準確度和可用性。
+	你可以使用<a href="scores">網頁前端</a>或<a href="/manage">管理頁面</a>來監控你的伺服器的效能數值。
 	</p>
 </div>
 
